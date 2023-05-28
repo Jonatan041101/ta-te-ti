@@ -10,19 +10,22 @@ export default function GameOverC() {
   const { winner, resetGame, nextRound, isBot, playerInit } = useBearStore(
     (state) => state
   );
+  console.log({ winner });
 
   return (
     <Modal>
       <div className="gameover">
-        <h2 className="gameover__h2">
-          {isBot
-            ? winner === playerInit
+        {winner && (
+          <h2 className="gameover__h2">
+            {isBot
+              ? winner === playerInit
+                ? "Tu Ganas"
+                : "IA Gana"
+              : winner === playerInit
               ? "Tu Ganas"
-              : "IA Gana"
-            : winner === playerInit
-            ? "Tu Ganas"
-            : "El Gana"}
-        </h2>
+              : "El Gana"}
+          </h2>
+        )}
         <div
           className="gameover__win"
           style={{

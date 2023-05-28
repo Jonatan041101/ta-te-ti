@@ -94,6 +94,7 @@ const sliceTateti: StateCreator<Tateti> = (set) => ({
       countClicks: 0,
       countWinPlayer1: 0,
       countWinPlayer2: 0,
+      inPlay: false,
     }));
   },
   playToGame: (isBot) => {
