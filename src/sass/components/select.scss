@@ -27,10 +27,11 @@
   &__icon {
     @include flex(row, nowrap, space-around, center, 0.8em);
     // background-color: $gray;
-    flex-grow: 1;
+    // flex-grow: 1;
     height: 80%;
     border-radius: 0.5em;
     cursor: pointer;
+    width: 43%;
   }
   &__p {
     color: #3d545e;

@@ -372,10 +372,10 @@ button {
   justify-content: space-around;
   align-items: center;
   gap: 0.8em;
-  flex-grow: 1;
   height: 80%;
   border-radius: 0.5em;
   cursor: pointer;
+  width: 43%;
 }
 .select__p {
   color: #3d545e;

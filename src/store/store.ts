@@ -18,7 +18,7 @@ interface Tateti {
   changeTurn: (turn: XO) => void;
   changeWinner: (win: XO, playerInit: XO, turn: XO) => void;
   changePlays: (plays: Plays) => void;
-  nextRound: () => void;
+  nextRound: (loser: XO) => void;
   resetGame: () => void;
   playToGame: (isBot: boolean) => void;
   aumentClicks: () => void;
@@ -73,14 +73,14 @@ const sliceTateti: StateCreator<Tateti> = (set) => ({
   changePlays: (plays) => {
     set((state) => ({ ...state, plays }));
   },
-  nextRound: () => {
+  nextRound: (loser) => {
     set((state) => ({
       ...state,
       winner: null,
       gameEnd: false,
       win: null,
       plays: {},
-      turn: "X",
+      turn: loser,
     }));
   },
   resetGame: () => {

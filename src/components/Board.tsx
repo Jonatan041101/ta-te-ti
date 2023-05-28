@@ -38,13 +38,12 @@ export default function Board() {
   } = useBearStore((state) => state);
 
   useEffect(() => {
-    const prev = turn === "X" ? "O" : "X";
-    const winner = conditionWin.find((comp) =>
-      comp.every((cell) => plays[cell] === prev)
-    );
+    const prev: XO = turn === "X" ? "O" : "X";
+    const winner = getWinner(prev);
     if (winner) {
       changeIsWin(winner);
       changeWinner(prev, playerInit, prev);
+      return () => {};
     }
     if (Object.values(plays).length >= 9) {
       tieGame();
@@ -54,6 +53,19 @@ export default function Board() {
     }
   }, [plays, turn]);
 
+  const getWinner = (prev: XO) => {
+    const winner = conditionWin.find((comp) =>
+      comp.every((cell) => plays[cell] === prev)
+    );
+    return winner;
+  };
+
+  const checkWinningCondition = (testPlays: Plays, player: XO): boolean => {
+    const win = conditionWin.some((comp) =>
+      comp.every((cell) => testPlays[cell] === player)
+    );
+    return win;
+  };
   const handleClick = (cell: number) => {
     if (plays[cell]) return;
 
@@ -70,6 +82,7 @@ export default function Board() {
 
     changeTurn("X");
   };
+
   const botMove = () => {
     const availableMoves = BOARD.map((_, i) => i);
     const restMoves: number[] = [];
@@ -82,10 +95,40 @@ export default function Board() {
       }
     }
 
+    // Buscar jugada ganadora para el bot
+    const winningMove = findMovigBot(restMoves, turn);
+    if (winningMove !== null) {
+      handleClick(winningMove);
+      return;
+    }
+
+    // Buscar jugada de bloqueo para el jugador humano
+    const opponent = turn === "X" ? "O" : "X";
+
+    const blockingMove = findMovigBot(restMoves, opponent);
+    if (blockingMove !== null) {
+      handleClick(blockingMove);
+      return;
+    }
+
+    // Realizar un movimiento aleatorio
     const randomIndex = Math.floor(Math.random() * restMoves.length);
     const botMove = restMoves[randomIndex];
     handleClick(botMove);
   };
+
+  const findMovigBot = (moves: number[], player: XO): number | null => {
+    for (let i = 0; i < moves.length; i++) {
+      const testPlays: Plays = { ...plays };
+      testPlays[moves[i]] = player;
+
+      if (checkWinningCondition(testPlays, player)) {
+        return moves[i];
+      }
+    }
+    return null;
+  };
+
   return (
     <div className="board">
       {BOARD.map((_, i) => (

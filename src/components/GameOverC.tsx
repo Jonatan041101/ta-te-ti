@@ -44,7 +44,7 @@ export default function GameOverC() {
               color="#f2b237"
               value=""
               shadow="#cc8b13"
-              handleClick={nextRound}
+              handleClick={() => nextRound(winner === "X" ? "O" : "X")}
             />
           </div>
         </div>
