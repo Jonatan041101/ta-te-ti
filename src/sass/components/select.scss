@@ -43,6 +43,9 @@
     height: 6em;
     cursor: pointer;
   }
+  &__author {
+    color: #fff;
+  }
 }
 [data-back="true"] {
   background: $gray;

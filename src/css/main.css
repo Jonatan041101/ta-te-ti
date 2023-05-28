@@ -392,6 +392,9 @@ button {
   height: 6em;
   cursor: pointer;
 }
+.select__author {
+  color: #fff;
+}
 
 [data-back=true] {
   background: #9aaeb8;

@@ -66,6 +66,11 @@ export default function SelectGame() {
             handleClick={() => playToGame(false)}
           />
         </div>
+        <span className="select__author">
+          <a href="https://www.linkedin.com/in/jonatan-valdiviezo2205/">
+            Jonatan Valdiviezo
+          </a>
+        </span>
       </div>
     </Modal>
   );
