@@ -1,0 +1,35 @@
+.square {
+  @include flex(row, nowrap, center, center, 0);
+  cursor: pointer;
+  background: $buttons;
+  box-shadow: 0em 0.45em 0em $shadow;
+  border-radius: 1em;
+  // width: 100%;
+  // height: 100%;
+  aspect-ratio: 1 / 1;
+  // padding-top: 100%;
+  &__cruz {
+    @include flex(row, nowrap, center, center, 0);
+    color: $green;
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    transition: 0.5s ease;
+  }
+  &__circle {
+    @include flex(row, nowrap, center, center, 0);
+    color: $yello;
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    transition: 0.5s ease;
+  }
+}
+[data-wincircle="true"] {
+  color: $buttons;
+  background: $yello;
+}
+[data-wincruz="true"] {
+  color: $buttons;
+  background: $green;
+}

@@ -1,0 +1,30 @@
+.dashboard {
+  width: 100%;
+  @include flex(row, nowrap, space-between, center, 0);
+  &__section {
+    @include flex(row, nowrap, center, center, 0.5em);
+    color: $green;
+  }
+  &__turn {
+    @include flex(row, nowrap, center, center, 0.6em);
+    padding: 0.5em 1.5em;
+    border-radius: 0.5em;
+    background: $buttons;
+    color: $gray;
+    box-shadow: 0em 0.2em 0em $shadow;
+  }
+  &__span {
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+  &__reload {
+    cursor: pointer;
+    padding: 0.6em;
+    background: $gray;
+    border-radius: 0.3em;
+    box-shadow: 0em 0.2em 0em $shadow-gray;
+  }
+  &__i {
+    color: $yello;
+  }
+}

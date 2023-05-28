@@ -1,0 +1,34 @@
+.gameover {
+  @include flex(column, nowrap, center, center, 1.4em);
+  background: $buttons;
+  font-weight: bold;
+  width: 100%;
+  padding: 2.5em 0;
+  text-transform: uppercase;
+  &__h2 {
+    color: $gray;
+  }
+  &__win {
+    color: $green;
+    @include flex(row, nowrap, center, center, 1em);
+  }
+  &__span {
+    font-size: 1.3em;
+  }
+  &__buttons {
+    width: 100%;
+    @include flex(row, nowrap, center, center, 1em);
+    height: 3em;
+    // width: 20em;
+  }
+  &__out {
+    height: 100%;
+    width: 5em;
+    cursor: pointer;
+  }
+  &__round {
+    height: 100%;
+    width: 10em;
+    cursor: pointer;
+  }
+}

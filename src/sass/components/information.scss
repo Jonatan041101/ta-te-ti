@@ -1,0 +1,4 @@
+.information {
+  width: 100%;
+  @include flex(row, nowrap, space-between, center, 1.5em);
+}

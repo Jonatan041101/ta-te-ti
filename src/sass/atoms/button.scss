@@ -1,0 +1,13 @@
+.btn {
+  @include flex(column, nowrap, center, center, 0.1em);
+  // width: 8em;
+  font-weight: bold;
+  border-radius: 0.6em;
+  display: inline-flex;
+  // padding: 0.3em 0;
+  height: 100%;
+  width: 100%;
+  &__value {
+    font-size: 1.4em;
+  }
+}

@@ -1,0 +1,465 @@
+@charset "UTF-8";
+/* Definimos las Custom properties */
+:root {
+  /* Colores */
+  --negro: #393939;
+  /* Tipografía */
+  --tipo-principal: Helvetica, Arial, sans-serif;
+  --tipo-secundaria: Verdana;
+}
+
+/* (Opcional) Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --negro: #ececec;
+  }
+}
+/* (Opcional) Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* (Opcional) Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.upercase {
+  text-transform: capitalize;
+}
+
+/* Reseteamos los margin y paddings de todas las etiquetas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+*::before,
+*::after {
+  display: block;
+}
+
+/* Evitamos problemas con las imagenes */
+img,
+picture,
+video,
+iframe,
+figure {
+  display: block;
+  /* (Opcional) */
+  object-fit: cover;
+  /* (Opcional) */
+  object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* (Opcional) Configuramos anclas suaves */
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* (Opcional) Configuramos el texto que seleccionamos */
+::selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* (Opcional) */
+  appearance: none;
+}
+
+/* Reseteamos las tablas */
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  display: block;
+  fill: currentColor;
+}
+
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  /* (Opcional) */
+  hyphens: auto;
+  /* (Opcional) */
+  font-smooth: always;
+  /* (Opcional) */
+  -webkit-font-smoothing: antialiased;
+  /* (Opcional) */
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none; /* Esto oculta la barra de desplazamiento */
+  font-family: GothamLight;
+  overflow-x: hidden;
+}
+
+select::-ms-expand {
+  display: none; /*Evita que se muestre la flecha por defecto en versiones de IE*/
+  outline: none;
+  border: none;
+}
+
+select:focus {
+  outline: none;
+  border: none;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 #ffffff;
+}
+
+/* Chrome, Edge and Safari */
+button {
+  cursor: pointer;
+}
+
+.dashboard {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+}
+.dashboard__section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  color: #2cb1ac;
+}
+.dashboard__turn {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5em 1.5em;
+  border-radius: 0.5em;
+  background: #1f3540;
+  color: #9aaeb8;
+  box-shadow: 0em 0.2em 0em #0f202a;
+}
+.dashboard__span {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.dashboard__reload {
+  cursor: pointer;
+  padding: 0.6em;
+  background: #9aaeb8;
+  border-radius: 0.3em;
+  box-shadow: 0em 0.2em 0em #6f8b96;
+}
+.dashboard__i {
+  color: #f2b237;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-auto-rows: 4.5em;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.information {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.square {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+  background: #1f3540;
+  box-shadow: 0em 0.45em 0em #0f202a;
+  border-radius: 1em;
+  aspect-ratio: 1/1;
+}
+.square__cruz {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  color: #2cb1ac;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  transition: 0.5s ease;
+}
+.square__circle {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  color: #f2b237;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  transition: 0.5s ease;
+}
+
+[data-wincircle=true] {
+  color: #1f3540;
+  background: #f2b237;
+}
+
+[data-wincruz=true] {
+  color: #1f3540;
+  background: #2cb1ac;
+}
+
+.circle {
+  fill: transparent;
+  stroke: currentColor;
+}
+
+.btn {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1em;
+  font-weight: bold;
+  border-radius: 0.6em;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+}
+.btn__value {
+  font-size: 1.4em;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(0.8em);
+  z-index: 10;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.select {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  width: 20em;
+  text-transform: uppercase;
+}
+.select__section {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8em;
+  background: #1f3540;
+  height: 12em;
+  padding: 0.5em 0;
+  width: 100%;
+  border-radius: 0.5em;
+  box-shadow: 0em 0.3em 0em #0f202a;
+}
+.select__h2 {
+  color: #9aaeb8;
+  font-weight: bold;
+}
+.select__circle {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.8em;
+  height: 5em;
+  width: 90%;
+  background: #192a32;
+  border-radius: 0.5em;
+  color: #9aaeb8;
+}
+.select__icon {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.8em;
+  flex-grow: 1;
+  height: 80%;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+.select__p {
+  color: #3d545e;
+  font-weight: bold;
+}
+.select__buttons {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8em;
+  width: 100%;
+  height: 6em;
+  cursor: pointer;
+}
+
+[data-back=true] {
+  background: #9aaeb8;
+  color: #1f3540;
+}
+
+.gameover {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4em;
+  background: #1f3540;
+  font-weight: bold;
+  width: 100%;
+  padding: 2.5em 0;
+  text-transform: uppercase;
+}
+.gameover__h2 {
+  color: #9aaeb8;
+}
+.gameover__win {
+  color: #2cb1ac;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.gameover__span {
+  font-size: 1.3em;
+}
+.gameover__buttons {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  height: 3em;
+}
+.gameover__out {
+  height: 100%;
+  width: 5em;
+  cursor: pointer;
+}
+.gameover__round {
+  height: 100%;
+  width: 10em;
+  cursor: pointer;
+}
+
+.main {
+  background: #192a32;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+.main__container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+  max-width: 35em;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,16 @@
+@import "./mixins/mixin.scss", "./variables/variables.scss",
+  "./reset/reset.scss", "./components/dashboard.scss", "./components/board.scss",
+  "./components/information.scss", "./components/square.scss",
+  "./icons/cruz.scss", "./atoms/button.scss", "./components/modal.scss",
+  "./components/select.scss", "./components/gameover.scss";
+.main {
+  background: $background;
+  // height: 200vh;
+  height: 100vh;
+  @include flex(column, nowrap, center, center, 2em);
+  &__container {
+    @include flex(column, nowrap, center, center, 2em);
+    width: 100%;
+    max-width: 35em;
+  }
+}
