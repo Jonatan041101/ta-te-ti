@@ -52,14 +52,14 @@ export default function SelectGame() {
         </section>
         <div className="select__buttons">
           <Button
-            text="Nuego Juego (VS CPU)"
+            text="Nuevo Juego (VS CPU)"
             color="#f2b237"
             value=""
             shadow="#cc8b13"
             handleClick={() => playToGame(true)}
           />
           <Button
-            text="Nuego Juego (VS Jugador)"
+            text="Nuevo Juego (VS Jugador)"
             color="#31c3be"
             value=""
             shadow="#1e8786"

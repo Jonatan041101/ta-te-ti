@@ -7,11 +7,22 @@ import { useBearStore } from "@/store/store";
 import Circle from "@/atoms/icons/Circle";
 
 export default function GameOverC() {
-  const { winner, resetGame, nextRound } = useBearStore((state) => state);
+  const { winner, resetGame, nextRound, isBot, playerInit } = useBearStore(
+    (state) => state
+  );
+
   return (
     <Modal>
       <div className="gameover">
-        <h2 className="gameover__h2">Tu ganas</h2>
+        <h2 className="gameover__h2">
+          {isBot
+            ? winner === playerInit
+              ? "Tu Ganas"
+              : "IA Gana"
+            : winner === playerInit
+            ? "Tu Ganas"
+            : "El Gana"}
+        </h2>
         <div
           className="gameover__win"
           style={{
