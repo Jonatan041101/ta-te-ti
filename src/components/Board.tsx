@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Square from "./Square";
 import Button from "@/atoms/Button";
 import { XO, useBearStore } from "@/store/store";
@@ -145,7 +145,7 @@ export default function Board() {
         value={`${countWinPlayer1}`}
         text={`${playerInit} (Tu)`}
       />
-      <Button color="#a8bec9" value={`${countClicks}`} text="Ties" />
+      <Button color="#a8bec9" value={`${countClicks}`} text="Pasos" />
       <Button
         color={`${playerInit === "X" ? "#f2b237" : "#31c3be"}`}
         value={`${countWinPlayer2}`}

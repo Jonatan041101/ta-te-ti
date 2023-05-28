@@ -12,9 +12,9 @@ export default function DashBoard() {
     <div className="dashboard">
       <IconsT />
       <div className="dashboard__turn">
+        <span className="dashboard__span">TURNO DE</span>
         {turn === "X" && <Cruz width={15} />}
         {turn === "O" && <Circle width={16} />}
-        <span className="dashboard__span">TURN</span>
       </div>
       <div className="dashboard__reload" onClick={resetGame}>
         <button>
